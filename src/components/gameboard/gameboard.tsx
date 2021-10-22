@@ -14,21 +14,6 @@ interface ICardsCleared {
   [key: string]: string;
 }
 
-const defaultCards = [
-  { imageUrl: './assets/mario-logo.png', id: 1 },
-  { imageUrl: './assets/mario-logo.png', id: 1 },
-  { imageUrl: './assets/animal-crossing.png', id: 3 },
-  { imageUrl: './assets/animal-crossing.png', id: 3 },
-  { imageUrl: './assets/animal-crossing.png', id: 4 },
-  { imageUrl: './assets/animal-crossing.png', id: 4 },
-  { imageUrl: './assets/animal-crossing.png', id: 5 },
-  { imageUrl: './assets/animal-crossing.png', id: 5 },
-  { imageUrl: './assets/animal-crossing.png', id: 6 },
-  { imageUrl: './assets/animal-crossing.png', id: 6 },
-  { imageUrl: './assets/animal-crossing.png', id: 7 },
-  { imageUrl: './assets/animal-crossing.png', id: 7 },
-];
-
 const checkCardStatus = (index: number, cardsOpened: number[], cardsCleared: ICardsCleared, card: ICardModel) => {
   if (cardsOpened.includes(index)) {
     return CARD_ITEM_STATE_MATCHED;
@@ -38,7 +23,7 @@ const checkCardStatus = (index: number, cardsOpened: number[], cardsCleared: ICa
   return CARD_ITEM_STATE_BACKFACED;
 };
 
-const Gameboard: React.FC<IGameboard> = ({ cards = defaultCards, id, onCompletionCallback = () => {} }) => {
+const Gameboard: React.FC<IGameboard> = ({ cards = [], id, onCompletionCallback = () => {} }) => {
   const [cardsOpened, setCardsOpen] = useState<Array<number>>([]);
   const [cardsCleared, setCardsCleared] = useState<ICardsCleared>({});
   const [moves, setMoves] = useState<number>(0);
