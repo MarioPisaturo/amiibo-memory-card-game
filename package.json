@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@sky-uk/eslint-config-sky-jest": "^33.1.3",
+    "@sky-uk/eslint-config-sky-react": "^33.1.3",
     "@sky-uk/eslint-config-sky-typescript": "^33.1.3",
     "node-sass": "^6.0.1",
     "prop-types": "^15.7.2"

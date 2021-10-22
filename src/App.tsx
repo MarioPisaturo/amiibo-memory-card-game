@@ -1,3 +1,5 @@
+import React from 'react';
+
 import './App.scss';
 import Gameboard from './components/gameboard/gameboard';
 
@@ -21,7 +23,7 @@ function App() {
     <div className="app">
       <div className="app-gameboard">
         <p>Welcome to Amiboo memory card game!</p>
-        <Gameboard id={1} type={'random'} cards={defaultCards}></Gameboard>
+        <Gameboard id={1} type="random" cards={defaultCards} />
       </div>
     </div>
   );

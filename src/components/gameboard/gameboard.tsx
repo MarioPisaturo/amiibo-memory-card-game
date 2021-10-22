@@ -37,32 +37,27 @@ const Gameboard: React.FC<IGameboard> = ({ cards = [], id, onCompletionCallback 
     }
   };
 
-  const evaluateOpenedCards = () => {
-    const [card1, card2] = cardsOpened;
-    if (cards[card1].id === cards[card2].id) {
-      setCardsCleared((prev) => ({ ...prev, [cards[card1].id]: true }));
+  /** Cards open/close hook */
+  useEffect(() => {
+    if (cardsOpened.length === 2) {
+      const [card1, card2] = cardsOpened;
+      if (cards[card1].id === cards[card2].id) {
+        setCardsCleared((prev) => ({ ...prev, [cards[card1].id]: true }));
+      } else {
+        setTimeout(() => {
+          setCardsOpen([]);
+        }, 500);
+      }
     }
-    setTimeout(() => {
-      setCardsOpen([]);
-    }, 500);
-  };
+  }, [cardsOpened, cards]);
 
-  const checkCompletion = () => {
+  /* onCompletion Hook*/
+  useEffect(() => {
     if (Object.keys(cardsCleared).length === cards.length / 2) {
       console.log('win!');
       onCompletionCallback(moves);
     }
-  };
-
-  useEffect(() => {
-    checkCompletion();
-  }, [cardsCleared]);
-
-  useEffect(() => {
-    if (cardsOpened.length === 2) {
-      evaluateOpenedCards();
-    }
-  }, [cardsOpened]);
+  }, [cardsCleared, cards, moves, onCompletionCallback]);
 
   return (
     <div className="gameboard" id={`${id}`}>
@@ -83,9 +78,9 @@ const Gameboard: React.FC<IGameboard> = ({ cards = [], id, onCompletionCallback 
 };
 
 Gameboard.propTypes = {
+  cards: PropTypes.array,
   id: PropTypes.number.isRequired,
   onCompletionCallback: PropTypes.func,
-  cards: PropTypes.array,
 };
 
 export default Gameboard;
