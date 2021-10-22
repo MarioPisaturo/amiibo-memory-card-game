@@ -42,7 +42,7 @@ const Gameboard: React.FC<IGameboard> = ({ cards = [], id, onCompletionCallback 
     if (cardsOpened.length === 2) {
       const [card1, card2] = cardsOpened;
       if (cards[card1].id === cards[card2].id) {
-        setCardsCleared((prev) => ({ ...prev, [cards[card1].id]: true }));
+        setCardsCleared((prev: ICardsCleared) => ({ ...prev, [cards[card1].id]: true }));
       } else {
         setTimeout(() => {
           setCardsOpen([]);
