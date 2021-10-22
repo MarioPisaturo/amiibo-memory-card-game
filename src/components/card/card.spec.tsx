@@ -7,7 +7,7 @@ describe('Card', () => {
   function makeProps(
     overrideProps: ICard = {
       id: 1,
-      imageUrl: 'team-driver/drivers/Lewis-HAMILTON-profilo.png',
+      imageUrl: 'mocked image Url',
       state: 'backfaced',
       onCardClicked: () => {},
     }
@@ -17,7 +17,7 @@ describe('Card', () => {
     };
   }
 
-  it('should render a Default Card (with only image)', () => {
+  it('should render a Default Card ', () => {
     const props: ICard = makeProps();
     const wrapper = shallow(<Card {...props} />);
     expect(wrapper).toHaveLength(1);
