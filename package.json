@@ -8,7 +8,7 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "test:jest": "jest",
-    "test:jest:watch": "npm run test -- --watch"
+    "test:jest:watch": "npm run test:jest -- --watch"
   },
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",

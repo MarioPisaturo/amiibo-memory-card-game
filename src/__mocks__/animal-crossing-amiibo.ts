@@ -1,4 +1,4 @@
-import { IAmiibo, IAmiiboAPIResponse } from '../typings/amiibo';
+import { IAmiiboAPIResponse } from '../typings/amiibo';
 
 export const mockedAPIResponse: IAmiiboAPIResponse = {
   amiibo: [
