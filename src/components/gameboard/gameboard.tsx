@@ -51,17 +51,16 @@ const Gameboard: React.FC<IGameboard> = ({ cards = [], id, onCompletionCallback 
     }
   }, [cardsOpened, cards]);
 
-  /* onCompletion Hook*/
+  /* check onCompletion Hook*/
   useEffect(() => {
     if (Object.keys(cardsCleared).length === cards.length / 2) {
-      console.log('win!');
       onCompletionCallback(moves);
     }
   }, [cardsCleared, cards, moves, onCompletionCallback]);
 
   return (
     <div className="gameboard" id={`${id}`}>
-      {cards.map((card, index) => {
+      {cards.map((card: ICardModel, index: number) => {
         return (
           <Card
             key={`gamecard-index-${index}`}

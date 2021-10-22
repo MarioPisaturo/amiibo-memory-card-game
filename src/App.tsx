@@ -18,12 +18,14 @@ const defaultCards = [
   { imageUrl: './assets/animal-crossing.png', id: 7 },
 ];
 
+const onCompletionCallback = (moves: number) => console.log('You win in MOVES:', moves);
+
 function App() {
   return (
     <div className="app">
       <div className="app-gameboard">
         <p>Welcome to Amiboo memory card game!</p>
-        <Gameboard id={1} type="random" cards={defaultCards} />
+        <Gameboard id={1} type="random" cards={defaultCards} onCompletionCallback={onCompletionCallback} />
       </div>
     </div>
   );
