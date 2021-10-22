@@ -1,37 +1,51 @@
 {
-    "env": {
-      "browser": true,
-      "node": true,
-      "jest": true
-    },
-    "extends": [
-      "@sky-uk/eslint-config-sky-typescript",
-      "@sky-uk/eslint-config-sky-jest",
-          "plugin:import/typescript"
-    ],
-    "globals": {
-      "assert": false
-    },
-    "ignorePatterns": [
-      "node_modules/*"
-    ],
-    "parserOptions": {
-      "ecmaVersion": 6,
-      "sourceType": "module"
-    },
-    "plugins": [
-      "jest"
-    ],
-    "root": true,
-    "rules": {
-      "default-case-last": "off",
-      "import/no-named-as-default": "off",
-      "no-loss-of-precision": "off",
-      "no-nonoctal-decimal-escape": "off",
-      "no-unreachable-loop": "off",
-      "no-unsafe-optional-chaining": "off",
-      "no-useless-backreference": "off",
-      "prefer-promise-reject-errors": "off",
-      "jest/no-done-callback": "off"
+  "env": {
+    "browser": true,
+    "node": true,
+    "jest": true
+  },
+  "extends": [
+    "@sky-uk/eslint-config-sky-typescript",
+    "@sky-uk/eslint-config-sky-react",
+    "@sky-uk/eslint-config-sky-jest",
+    "plugin:import/typescript"
+  ],
+  "globals": {
+    "assert": false
+  },
+  "ignorePatterns": [
+    "node_modules/*"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "sourceType": "module"
+  },
+  "plugins": [
+    "jest"
+  ],
+  "root": true,
+  "rules": {
+    "default-case-last": "off",
+    "import/no-named-as-default": "off",
+    "no-loss-of-precision": "off",
+    "no-nonoctal-decimal-escape": "off",
+    "no-unreachable-loop": "off",
+    "no-unsafe-optional-chaining": "off",
+    "no-useless-backreference": "off",
+    "prefer-promise-reject-errors": "off",
+    "jest/no-done-callback": "off",
+    "react/jsx-no-useless-fragment": "off",
+    "react/sort-prop-types": [
+      "warn",
+      {
+        "sortShapeProp": true,
+        "ignoreCase": true
+      }
+    ]
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
     }
   }
+}

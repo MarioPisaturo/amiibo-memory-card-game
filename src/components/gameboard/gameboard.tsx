@@ -14,21 +14,6 @@ interface ICardsCleared {
   [key: string]: string;
 }
 
-const defaultCards = [
-  { imageUrl: './assets/mario-logo.png', id: 1 },
-  { imageUrl: './assets/mario-logo.png', id: 1 },
-  { imageUrl: './assets/animal-crossing.png', id: 3 },
-  { imageUrl: './assets/animal-crossing.png', id: 3 },
-  { imageUrl: './assets/animal-crossing.png', id: 4 },
-  { imageUrl: './assets/animal-crossing.png', id: 4 },
-  { imageUrl: './assets/animal-crossing.png', id: 5 },
-  { imageUrl: './assets/animal-crossing.png', id: 5 },
-  { imageUrl: './assets/animal-crossing.png', id: 6 },
-  { imageUrl: './assets/animal-crossing.png', id: 6 },
-  { imageUrl: './assets/animal-crossing.png', id: 7 },
-  { imageUrl: './assets/animal-crossing.png', id: 7 },
-];
-
 const checkCardStatus = (index: number, cardsOpened: number[], cardsCleared: ICardsCleared, card: ICardModel) => {
   if (cardsOpened.includes(index)) {
     return CARD_ITEM_STATE_MATCHED;
@@ -38,7 +23,7 @@ const checkCardStatus = (index: number, cardsOpened: number[], cardsCleared: ICa
   return CARD_ITEM_STATE_BACKFACED;
 };
 
-const Gameboard: React.FC<IGameboard> = ({ cards = defaultCards, id, onCompletionCallback = () => {} }) => {
+const Gameboard: React.FC<IGameboard> = ({ cards = [], id, onCompletionCallback = () => {} }) => {
   const [cardsOpened, setCardsOpen] = useState<Array<number>>([]);
   const [cardsCleared, setCardsCleared] = useState<ICardsCleared>({});
   const [moves, setMoves] = useState<number>(0);
@@ -52,36 +37,30 @@ const Gameboard: React.FC<IGameboard> = ({ cards = defaultCards, id, onCompletio
     }
   };
 
-  const evaluateOpenedCards = () => {
-    const [card1, card2] = cardsOpened;
-    if (cards[card1].id === cards[card2].id) {
-      setCardsCleared((prev) => ({ ...prev, [cards[card1].id]: true }));
-    }
-    setTimeout(() => {
-      setCardsOpen([]);
-    }, 500);
-  };
-
-  const checkCompletion = () => {
-    if (Object.keys(cardsCleared).length === cards.length / 2) {
-      console.log('win!');
-      onCompletionCallback(moves);
-    }
-  };
-
-  useEffect(() => {
-    checkCompletion();
-  }, [cardsCleared]);
-
+  /** Cards open/close hook */
   useEffect(() => {
     if (cardsOpened.length === 2) {
-      evaluateOpenedCards();
+      const [card1, card2] = cardsOpened;
+      if (cards[card1].id === cards[card2].id) {
+        setCardsCleared((prev: ICardsCleared) => ({ ...prev, [cards[card1].id]: true }));
+      } else {
+        setTimeout(() => {
+          setCardsOpen([]);
+        }, 500);
+      }
     }
-  }, [cardsOpened]);
+  }, [cardsOpened, cards]);
+
+  /* check onCompletion Hook*/
+  useEffect(() => {
+    if (Object.keys(cardsCleared).length === cards.length / 2) {
+      onCompletionCallback(moves);
+    }
+  }, [cardsCleared, cards, moves, onCompletionCallback]);
 
   return (
     <div className="gameboard" id={`${id}`}>
-      {cards.map((card, index) => {
+      {cards.map((card: ICardModel, index: number) => {
         return (
           <Card
             key={`gamecard-index-${index}`}
@@ -98,9 +77,9 @@ const Gameboard: React.FC<IGameboard> = ({ cards = defaultCards, id, onCompletio
 };
 
 Gameboard.propTypes = {
+  cards: PropTypes.array,
   id: PropTypes.number.isRequired,
   onCompletionCallback: PropTypes.func,
-  cards: PropTypes.array,
 };
 
 export default Gameboard;
