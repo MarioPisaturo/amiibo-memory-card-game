@@ -16,13 +16,12 @@ export const CARD_ITEM_STATE_BACKFACED: CardState = 'backfaced'; // Not flipped 
 export interface ICard extends ICardModel {
   state: CardState;
   backfaceUrl?: string;
-  onCardClicked: (id: number) => any;
+  onCardClicked: (id: number) => unknown;
 }
 
-/** Check if card if flipped on is data-face or not */
 const isFlipped = (state: CardState) => state === CARD_ITEM_STATE_MATCHED || state === CARD_ITEM_STATE_ENABLED;
 
-const handleClick = (id: number, onCardClicked: (id: number) => any, state: CardState): any => {
+const handleClick = (id: number, onCardClicked: (id: number) => any, state: CardState) => {
   if (!isFlipped(state)) {
     onCardClicked(id);
   }
