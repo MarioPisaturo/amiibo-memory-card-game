@@ -1,10 +1,12 @@
 /**
+ * decare JSDOM test env
  * @jest-environment jsdom
  */
 import * as React from 'react';
 import { mount, shallow } from 'enzyme';
 
 import { mockedDeckx12, mockedDeckx6 } from '../../__mocks__/deck';
+import Card, { CARD_ITEM_STATE_ENABLED, CARD_ITEM_STATE_MATCHED, CARD_ITEM_STATE_BACKFACED } from '../card/card';
 
 import Gameboard, { IGameboard } from './gameboard';
 
@@ -36,10 +38,10 @@ describe('Gameboard', () => {
     const props: IGameboard = makeProps();
     const wrapper = shallow(<Gameboard {...props} />);
     expect(wrapper).toHaveLength(1);
-    const cards = wrapper.find('Card');
+    const cards = wrapper.find(Card);
 
     expect(cards).toHaveLength(12); // should render all 12 cards
-    cards.forEach((card) => expect(card.prop('state')).toBe('backfaced')); // backfaced
+    cards.forEach((card) => expect(card.prop('state')).toBe(CARD_ITEM_STATE_BACKFACED)); // backfaced
   });
 
   it('should render a Default Gameboard with 6 cards ', () => {
@@ -49,7 +51,7 @@ describe('Gameboard', () => {
     };
     const wrapper = shallow(<Gameboard {...props} />);
     expect(wrapper).toHaveLength(1);
-    expect(wrapper.find('Card')).toHaveLength(6);
+    expect(wrapper.find(Card)).toHaveLength(6);
   });
 
   it('should update Clicked card in Gameboard ', () => {
@@ -58,10 +60,10 @@ describe('Gameboard', () => {
       cards: mockedDeckx6.cards,
     };
     const wrapper = mount(<Gameboard {...props} />);
-    const card0 = wrapper.find('Card').at(0);
+    const card0 = wrapper.find(Card).at(0);
     card0.find('div').at(0).simulate('click');
-    const card0State = wrapper.find('Card').at(0).render().attr('data-state');
-    expect(card0State).toEqual('enabled');
+    const card0State = wrapper.find(Card).at(0).render().attr('data-state');
+    expect(card0State).toEqual(CARD_ITEM_STATE_ENABLED);
   });
 
   it('MATCHING BEHAVIOR - should match cards with the same IDs', () => {
@@ -70,20 +72,20 @@ describe('Gameboard', () => {
       cards: mockedDeckx6.cards,
     };
     const wrapper = mount(<Gameboard {...props} />);
-    const card0 = wrapper.find('Card').at(0);
-    const card1 = wrapper.find('Card').at(1);
+    const card0 = wrapper.find(Card).at(0);
+    const card1 = wrapper.find(Card).at(1);
 
     // simulate click on card1
     card0.find('div').at(0).simulate('click');
     const card0State = card0.render().attr('data-state');
-    expect(card0State).toEqual('enabled');
+    expect(card0State).toEqual(CARD_ITEM_STATE_ENABLED);
 
     // simulate click on card2
     card1.find('div').at(0).simulate('click');
     const card0StateMatched = card0.render().attr('data-state');
     const card1StateMatched = card1.render().attr('data-state');
-    expect(card0StateMatched).toEqual('matched');
-    expect(card1StateMatched).toEqual('matched');
+    expect(card0StateMatched).toEqual(CARD_ITEM_STATE_MATCHED);
+    expect(card1StateMatched).toEqual(CARD_ITEM_STATE_MATCHED);
   });
 
   it('MATCHING BEHAVIOR FAILED - should match cards with the same IDs', () => {
@@ -92,14 +94,14 @@ describe('Gameboard', () => {
       cards: mockedDeckx6.cards,
     };
     const wrapper = mount(<Gameboard {...props} />);
-    const cardA = wrapper.find('Card').at(0);
-    const cardB = wrapper.find('Card').at(5);
-    const cardC = wrapper.find('Card').at(2);
+    const cardA = wrapper.find(Card).at(0);
+    const cardB = wrapper.find(Card).at(5);
+    const cardC = wrapper.find(Card).at(2);
 
     // simulate click on card1
     cardA.find('div').at(0).simulate('click');
     const card0State = cardA.render().attr('data-state');
-    expect(card0State).toEqual('enabled');
+    expect(card0State).toEqual(CARD_ITEM_STATE_ENABLED);
 
     // simulate click on card2
     cardB.find('div').at(0).simulate('click');
@@ -109,9 +111,9 @@ describe('Gameboard', () => {
     const cardBStateMatched2 = cardB.render().attr('data-state');
     const cardCStateMatched2 = cardC.render().attr('data-state');
 
-    expect(cardAStateMatched2).toEqual('backfaced');
-    expect(cardBStateMatched2).toEqual('backfaced');
-    expect(cardCStateMatched2).toEqual('enabled');
+    expect(cardAStateMatched2).toEqual(CARD_ITEM_STATE_BACKFACED);
+    expect(cardBStateMatched2).toEqual(CARD_ITEM_STATE_BACKFACED);
+    expect(cardCStateMatched2).toEqual(CARD_ITEM_STATE_ENABLED);
   });
 
   it('COMPLETION BEHAVIOR (in 3 moves for testing pourpose) - should call onCompletionCallback on win', () => {
@@ -123,12 +125,12 @@ describe('Gameboard', () => {
       onCompletionCallback: spyOnWin,
     };
     const wrapper = mount(<Gameboard {...props} />);
-    const card1 = wrapper.find('Card').at(0);
-    const card2 = wrapper.find('Card').at(1);
-    const card3 = wrapper.find('Card').at(2);
-    const card4 = wrapper.find('Card').at(3);
-    const card5 = wrapper.find('Card').at(4);
-    const card6 = wrapper.find('Card').at(5);
+    const card1 = wrapper.find(Card).at(0);
+    const card2 = wrapper.find(Card).at(1);
+    const card3 = wrapper.find(Card).at(2);
+    const card4 = wrapper.find(Card).at(3);
+    const card5 = wrapper.find(Card).at(4);
+    const card6 = wrapper.find(Card).at(5);
 
     // simulate click sequence to win the game
     // very simple sequence for testing pourpose
@@ -146,12 +148,12 @@ describe('Gameboard', () => {
     const card5State = card5.render().attr('data-state');
     const card6State = card6.render().attr('data-state');
 
-    expect(card1State).toEqual('enabled');
-    expect(card2State).toEqual('enabled');
-    expect(card3State).toEqual('enabled');
-    expect(card4State).toEqual('enabled');
-    expect(card5State).toEqual('matched'); // last 2 matched to win
-    expect(card6State).toEqual('matched'); // last 2 matched to win
+    expect(card1State).toEqual(CARD_ITEM_STATE_ENABLED); // enabled after matched
+    expect(card2State).toEqual(CARD_ITEM_STATE_ENABLED); // enabled after matched
+    expect(card3State).toEqual(CARD_ITEM_STATE_ENABLED); // enabled after matched
+    expect(card4State).toEqual(CARD_ITEM_STATE_ENABLED); // enabled after matched
+    expect(card5State).toEqual(CARD_ITEM_STATE_MATCHED); // last 2 matched to win
+    expect(card6State).toEqual(CARD_ITEM_STATE_MATCHED); // last 2 matched to win
     expect(spyOnWin).toHaveBeenCalledTimes(1);
     expect(spyOnWin).toHaveLastReturnedWith(true); // id === 1234
   });
