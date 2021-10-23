@@ -15,6 +15,7 @@ import Gameboard, { IGameboard } from './gameboard';
  * 4. Simulate a Matching behavior
  * 5. Simulate a Matching behavior failed
  * 6. Simulate a Game Completion Win
+ * 7. ... and so on
  */
 
 describe('Gameboard', () => {
