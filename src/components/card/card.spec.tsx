@@ -72,6 +72,15 @@ describe('Card components', () => {
     expect(wrapper.find('div').at(0).prop('className')).toEqual('card is-flipped');
   });
 
+  it('should render a custom backface Card ', () => {
+    const props: ICard = {
+      ...makeProps(),
+      backfaceUrl: 'my/custom/backface/img',
+    };
+    const wrapper = shallow(<Card {...props} />);
+    expect(wrapper.find('img').at(0).prop('src')).toEqual(props.backfaceUrl);
+  });
+
   it('should call onCardClicked callback with correct id', () => {
     const spyOnClick = jest.fn((id: number) => id === 1234);
     const props: ICard = {
@@ -82,6 +91,6 @@ describe('Card components', () => {
     const rendered = shallow(<Card {...props} />);
     rendered.find('div').at(0).simulate('click');
     expect(spyOnClick).toHaveBeenCalledTimes(1);
-    expect(spyOnClick).toHaveLastReturnedWith(true); // id === 1
+    expect(spyOnClick).toHaveLastReturnedWith(true); // id === 1234
   });
 });
