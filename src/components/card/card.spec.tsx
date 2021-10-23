@@ -24,7 +24,7 @@ describe('Card components', () => {
 
     expect(wrapper.find('img').at(0).prop('src')).toEqual('./assets/poketball.png'); // DEFAULT PROP BACKFACE
     expect(wrapper.find('img').at(1).prop('src')).toEqual(props.imageUrl);
-    expect(wrapper.find('div').at(2).prop('className')).toMatch(/card-face card-back-face/); // BACK FACE DIV
+    expect(wrapper.find('div').at(2).prop('className')).toMatch(/card-face card-back-face/); // BACK FACE showed
   });
 
   it('should render a BACKFACED Card ', () => {
