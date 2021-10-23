@@ -16,7 +16,7 @@ interface ICardsCleared {
 
 const checkCardStatus = (index: number, cardsOpened: number[], cardsCleared: ICardsCleared, card: ICardModel) => {
   if (cardsOpened.includes(index)) {
-    return CARD_ITEM_STATE_MATCHED;
+    return cardsOpened.length === 1 ? CARD_ITEM_STATE_ENABLED : CARD_ITEM_STATE_MATCHED;
   } else if (cardsCleared[card.id]) {
     return CARD_ITEM_STATE_ENABLED;
   }
