@@ -17,7 +17,8 @@ import Gameboard, { IGameboard } from './gameboard';
  * 4. Simulate a Matching behavior
  * 5. Simulate a Matching behavior failed
  * 6. Simulate a Game Completion Win
- * 7. ... and so on
+ * 7. Empty cards array shoud not cause a crash
+ * 8. ... and so on
  */
 
 describe('Gameboard', () => {
@@ -148,13 +149,24 @@ describe('Gameboard', () => {
     const card5State = card5.render().attr('data-state');
     const card6State = card6.render().attr('data-state');
 
-    expect(card1State).toEqual(CARD_ITEM_STATE_ENABLED); // enabled after matched
-    expect(card2State).toEqual(CARD_ITEM_STATE_ENABLED); // enabled after matched
-    expect(card3State).toEqual(CARD_ITEM_STATE_ENABLED); // enabled after matched
-    expect(card4State).toEqual(CARD_ITEM_STATE_ENABLED); // enabled after matched
+    expect(card1State).toEqual(CARD_ITEM_STATE_ENABLED); // enabled (after matched)
+    expect(card2State).toEqual(CARD_ITEM_STATE_ENABLED); // enabled (after matched)
+    expect(card3State).toEqual(CARD_ITEM_STATE_ENABLED); // enabled (after matched)
+    expect(card4State).toEqual(CARD_ITEM_STATE_ENABLED); // enabled (after matched)
     expect(card5State).toEqual(CARD_ITEM_STATE_MATCHED); // last 2 matched to win
     expect(card6State).toEqual(CARD_ITEM_STATE_MATCHED); // last 2 matched to win
     expect(spyOnWin).toHaveBeenCalledTimes(1);
     expect(spyOnWin).toHaveLastReturnedWith(true); // id === 1234
+  });
+
+  it('should render a Gameboard with 0 cards- empty cards array shoud not cause a crash ', () => {
+    const props: IGameboard = {
+      ...makeProps(),
+      cards: [],
+    };
+    const wrapper = shallow(<Gameboard {...props} />);
+    expect(wrapper).toHaveLength(1);
+    const cards = wrapper.find(Card);
+    expect(cards).toHaveLength(0);
   });
 });
