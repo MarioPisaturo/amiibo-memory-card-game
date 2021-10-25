@@ -1,3 +1,5 @@
+@import '../../styles/index.scss';
+
 .card {
   position: relative;
 
@@ -8,7 +10,7 @@
   transition: .3s;
 
   border-radius: 4px;
-  box-shadow: 2px 2px 4px 4px #dedede;
+  box-shadow: 2px 2px 4px 4px $color-card-box-shadow;
 
   transform-style: preserve-3d;
 
