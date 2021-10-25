@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import { amiiboGameSelection, IAmiiboGameSelection } from '../../utils/game-selection';
 import Card from '../../components/card/card';
+import { createAmiiboDeck } from '../../redux/amiibo-selectors';
+
 import './homepage.scss';
 
 function Homepage() {
   const history = useHistory();
+  const deck = useSelector((store) => createAmiiboDeck(store, 'animalCrossing'));
+
+  console.log(deck);
 
   const onAmiiboTypeSelected = (id: number) => {
     const selectedAmiibo = amiiboGameSelection.find((elm) => elm.id === id);

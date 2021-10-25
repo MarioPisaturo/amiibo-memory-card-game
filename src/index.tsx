@@ -1,18 +1,43 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-
-import './index.scss';
+import { Provider } from 'react-redux';
 
 import HomepageScreen from './screens/homepage/homepage';
 import GameBoardScreen from './screens/gameboard/gameboard-screen';
 import CompletionScreen from './screens/game-completion/completion-screen';
+import store from './redux/store';
+import { fetchAmiibo } from './redux/amiibo-thunks';
+
+import './index.scss';
+
+store.dispatch(fetchAmiibo());
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <div>
-        <nav>
+    <Provider store={store}>
+      <Router>
+        <div>
+          <Switch>
+            <Route exact path="/">
+              <HomepageScreen />
+            </Route>
+            <Route path="/gameboard">
+              <GameBoardScreen />
+            </Route>
+            <Route path="/completion">
+              <CompletionScreen />
+            </Route>
+          </Switch>
+        </div>
+      </Router>
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+
+/**
+ *  <nav>
           <ul>
             <li>
               <Link to="/">Home</Link>
@@ -25,19 +50,4 @@ ReactDOM.render(
             </li>
           </ul>
         </nav>
-        <Switch>
-          <Route exact path="/">
-            <HomepageScreen />
-          </Route>
-          <Route path="/gameboard">
-            <GameBoardScreen />
-          </Route>
-          <Route path="/completion">
-            <CompletionScreen />
-          </Route>
-        </Switch>
-      </div>
-    </Router>
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+ */
