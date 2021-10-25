@@ -14,9 +14,13 @@ export interface IAmiiboCollection {
 }
 
 export interface IAmiiboSlice {
-  amiicoCollection: IAmiiboCollection;
+  amiiboCollection: IAmiiboCollection;
   error?: number | undefined;
   appState: 'AMIIBO_LOADING' | 'AMIIBO_LOADED';
+}
+
+export interface IAmiiboState {
+  amiibo: IAmiiboSlice;
 }
 
 /** initial state */
