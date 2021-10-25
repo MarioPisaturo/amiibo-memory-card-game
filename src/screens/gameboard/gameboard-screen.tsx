@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import Gameboard from '../../components/gameboard/gameboard';
 import { useQuery } from '../../utils/use-query';
-import { amibooGameSelection } from '../../utils/game-selection';
+import { amiiboGameSelection } from '../../utils/game-selection';
 
 const defaultCards = [
   { imageUrl: './assets/mario-logo.png', id: 1 },
@@ -24,7 +24,7 @@ function GameboardScreen() {
   const history = useHistory();
   const query = useQuery();
   const type = query.get('type');
-  const amiiboType = amibooGameSelection.find((elm) => elm.type === type);
+  const amiiboType = amiiboGameSelection.find((elm) => elm.type === type);
 
   function onCompletionCallback(moves: number) {
     setTimeout(() => history.push(`/completion?moves=${moves}`), 500);

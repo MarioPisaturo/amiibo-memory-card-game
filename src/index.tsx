@@ -3,7 +3,8 @@ import ReactDOM from 'react-dom';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 
 import './index.scss';
-import App from './screens/homepage/App';
+
+import HomepageScreen from './screens/homepage/homepage';
 import GameBoardScreen from './screens/gameboard/gameboard-screen';
 import CompletionScreen from './screens/game-completion/completion-screen';
 
@@ -26,7 +27,7 @@ ReactDOM.render(
         </nav>
         <Switch>
           <Route exact path="/">
-            <App />
+            <HomepageScreen />
           </Route>
           <Route path="/gameboard">
             <GameBoardScreen />
