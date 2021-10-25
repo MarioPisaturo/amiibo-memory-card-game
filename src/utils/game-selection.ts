@@ -4,7 +4,7 @@ export interface IAmiiboGameSelection extends ICard {
   type: string;
 }
 
-export const amibooGameSelection: IAmiiboGameSelection[] = [
+export const amiiboGameSelection: IAmiiboGameSelection[] = [
   {
     id: 1,
     type: 'mario',
