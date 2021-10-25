@@ -8,9 +8,9 @@ import './card.scss';
 export type CardState = 'hidden' | 'matched' | 'enabled' | 'backfaced';
 
 export const CARD_ITEM_STATE_HIDDEN: CardState = 'hidden';
-export const CARD_ITEM_STATE_ENABLED: CardState = 'enabled'; // Flipped and not matched
-export const CARD_ITEM_STATE_MATCHED: CardState = 'matched'; // Flipped and matched with is twin-card
-export const CARD_ITEM_STATE_BACKFACED: CardState = 'backfaced'; // DEFAULT not flipped -  the backface is showed
+export const CARD_ITEM_STATE_ENABLED: CardState = 'enabled';
+export const CARD_ITEM_STATE_MATCHED: CardState = 'matched';
+export const CARD_ITEM_STATE_BACKFACED: CardState = 'backfaced';
 
 export interface ICard extends ICardModel {
   state: CardState;
