@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-import amiiboReducer from './amiibo-slice';
+import amiiboReducer from './slices/amiibo-slice';
 
 export default configureStore({
   reducer: {

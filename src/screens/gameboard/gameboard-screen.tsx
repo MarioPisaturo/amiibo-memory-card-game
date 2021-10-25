@@ -5,8 +5,8 @@ import { useSelector } from 'react-redux';
 import Gameboard from '../../components/gameboard/gameboard';
 import { useQuery } from '../../utils/use-query';
 import { amiiboGameSelection } from '../../utils/game-selection';
-import { createAmiiboDeck, selectAppState } from '../../redux/amiibo-selectors';
-import { STATE_LOADING } from '../../redux/amiibo-slice';
+import { createAmiiboDeck, selectAppState } from '../../redux/selectors/amiibo-selectors';
+import { STATE_LOADING } from '../../redux/slices/amiibo-slice';
 import { ANIMAL_CROSSING_GAME_SERIES } from '../../utils/constants';
 
 const DEFAULT_DECK_TYPE = ANIMAL_CROSSING_GAME_SERIES;

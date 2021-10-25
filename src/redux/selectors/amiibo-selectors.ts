@@ -1,8 +1,7 @@
-import { createGameDeck } from '../utils/deck-utils';
-import { decoreteAmiiboWithId, mapAmiiboModelToCard } from '../utils/amiibo';
-import { ANIMAL_CROSSING_GAME_SERIES } from '../utils/constants';
-
-import { IAmiiboState } from './amiibo-slice';
+import { createGameDeck } from '../../utils/deck-utils';
+import { decoreteAmiiboWithId, mapAmiiboModelToCard } from '../../utils/amiibo';
+import { ANIMAL_CROSSING_GAME_SERIES } from '../../utils/constants';
+import { IAmiiboState } from '../slices/amiibo-slice';
 
 /**
  * Create Game Deck

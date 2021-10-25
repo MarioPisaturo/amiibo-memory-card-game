@@ -1,8 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
-import { IAmiibo } from '../typings/amiibo';
-
-import { fetchAmiibo } from './amiibo-thunks';
+import { IAmiibo } from '../../typings/amiibo';
+import { fetchAmiibo } from '../thunks/amiibo-thunks';
 
 export const STATE_LOADING = 'AMIIBO_LOADING';
 export const STATE_LOADED = 'AMIIBO_LOADED';

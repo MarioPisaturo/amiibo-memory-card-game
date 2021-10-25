@@ -7,7 +7,7 @@ import HomepageScreen from './screens/homepage/homepage';
 import GameBoardScreen from './screens/gameboard/gameboard-screen';
 import CompletionScreen from './screens/game-completion/completion-screen';
 import store from './redux/store';
-import { fetchAmiibo } from './redux/amiibo-thunks';
+import { fetchAmiibo } from './redux/thunks/amiibo-thunks';
 
 import './index.scss';
 
