@@ -32,9 +32,6 @@ export const amiiboSlice = createSlice({
   },
 });
 
-/** Selectors */
-export const selectAmiboo = (state: any) => state.amiibo.amiiboCollection.pokemon;
-
 /** Reducers */
 export default amiiboSlice.reducer;
 

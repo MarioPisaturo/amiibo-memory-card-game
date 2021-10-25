@@ -11,3 +11,5 @@ export const createAmiiboDeck = (state: any, type = ANIMAL_CROSSING_GAME_SERIES)
   const deck = createGameDeck(amibooArrayWithIds || []);
   return deck.map(mapAmiiboModelToCard);
 };
+
+export const selectAppState = (state: any) => state.amiibo.appState;
