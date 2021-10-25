@@ -8,6 +8,7 @@ export interface IAmiibo {
   readonly release?: IAmiiboRelease | null;
   readonly tail: string;
   readonly type: 'Card' | 'Figure' | 'Yarn';
+  readonly id?: number;
 }
 
 export interface IAmiiboRelease {

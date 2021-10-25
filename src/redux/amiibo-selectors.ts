@@ -1,8 +1,13 @@
 import { createGameDeck } from '../utils/deck-utils';
+import { decoreteAmiiboWithId, mapAmiiboModelToCard } from '../utils/amiibo';
+import { ANIMAL_CROSSING_GAME_SERIES } from '../utils/constants';
+
 /**
- * BUILD GAME DECK
+ * CREATE GAME DECK
  */
-export const createAmiiboDeck = (state: any, type = 'pokemon') => {
+export const createAmiiboDeck = (state: any, type = ANIMAL_CROSSING_GAME_SERIES) => {
   const amiiboArray = state.amiibo.amiiboCollection[type].amiibo;
-  return createGameDeck(amiiboArray || []);
+  const amibooArrayWithIds = amiiboArray?.map(decoreteAmiiboWithId);
+  const deck = createGameDeck(amibooArrayWithIds || []);
+  return deck.map(mapAmiiboModelToCard);
 };

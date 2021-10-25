@@ -2,6 +2,9 @@ import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
 import { fetchAmiibo } from './amiibo-thunks';
 
+export const STATE_LOADING = 'AMIIBO_LOADING';
+export const STATE_LOADED = 'AMIIBO_LOADED';
+
 const initialState = {
   value: 0,
   amiiboCollection: {
@@ -10,27 +13,21 @@ const initialState = {
     marioSuperStars: [],
   },
   error: null,
-  appState: 'AMIIBO_LOADING',
+  appState: STATE_LOADING,
 };
 
 export const amiiboSlice = createSlice({
   name: 'amiibo',
   initialState,
   reducers: {
-    increment: (state) => {
-      state.value += 1;
-    },
-    decrement: (state) => {
-      state.value -= 1;
-    },
-    incrementByAmount: (state, action) => {
-      state.value += action.payload;
+    setAppState: (state, action) => {
+      state.appState = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder.addCase(fetchAmiibo.fulfilled, (state, action) => {
       state.amiiboCollection = action.payload;
-      state.appState = 'AMIIBO_LOADED';
+      state.appState = STATE_LOADED;
     });
   },
 });
@@ -42,4 +39,4 @@ export const selectAmiboo = (state: any) => state.amiibo.amiiboCollection.pokemo
 export default amiiboSlice.reducer;
 
 /** Actions */
-export const { increment, decrement, incrementByAmount } = amiiboSlice.actions;
+export const { setAppState } = amiiboSlice.actions;
