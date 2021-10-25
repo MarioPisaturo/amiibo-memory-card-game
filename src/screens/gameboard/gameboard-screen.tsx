@@ -13,7 +13,7 @@ const DEFAULT_DECK_TYPE = ANIMAL_CROSSING_GAME_SERIES;
 
 const isLoading = (appState: string) => appState === STATE_LOADING;
 
-function GameboardScreen() {
+const GameboardScreen: React.FC = () => {
   const history = useHistory();
   const query = useQuery();
   const type = query.get('type');
@@ -21,9 +21,9 @@ function GameboardScreen() {
   const appState = useSelector(selectAppState);
   const deck = useSelector((store) => createAmiiboDeck(store, amiiboConfig?.type || DEFAULT_DECK_TYPE));
 
-  function onCompletionCallback(moves: number) {
+  const onCompletionCallback = (moves: number) => {
     setTimeout(() => history.push(`/completion?moves=${moves}`), 500);
-  }
+  };
 
   return (
     <div className="app-gameboard">
@@ -40,6 +40,6 @@ function GameboardScreen() {
       )}
     </div>
   );
-}
+};
 
 export default GameboardScreen;

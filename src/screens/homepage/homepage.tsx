@@ -6,7 +6,7 @@ import Card from '../../components/card/card';
 
 import './homepage.scss';
 
-function Homepage() {
+const Homepage: React.FC = () => {
   const history = useHistory();
 
   const onAmiiboTypeSelected = (id: number) => {
@@ -26,6 +26,6 @@ function Homepage() {
       </div>
     </div>
   );
-}
+};
 
 export default Homepage;
