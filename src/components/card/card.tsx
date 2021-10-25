@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 
 import { ICardModel } from '../../typings/card';
 
@@ -29,18 +28,11 @@ const handleClick = (id: number, onCardClicked: (id: number) => any, state: Card
 
 const Card: React.FC<ICard> = ({ id, onCardClicked, state, imageUrl, backfaceUrl = './assets/poketball.png' }) => {
   return (
-    <div
-      className={classnames('card', {
-        'is-flipped': isFlipped(state),
-        'is-inactive': state === CARD_ITEM_STATE_HIDDEN,
-      })}
-      data-state={state}
-      onClick={() => handleClick(id, onCardClicked, state)}
-    >
-      <div className="card-face card-font-face">
+    <div className="card" data-state={state} onClick={() => handleClick(id, onCardClicked, state)}>
+      <div className="card--card-face">
         <img src={backfaceUrl} alt="card flipped face" />
       </div>
-      <div className="card-face card-back-face">
+      <div className="card--card-face card--card-back-face">
         <img src={imageUrl} alt="data-face" />
       </div>
     </div>

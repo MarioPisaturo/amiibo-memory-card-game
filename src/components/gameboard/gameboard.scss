@@ -1,14 +1,18 @@
 .gameboard {
-    padding: 12px;
     display: grid;
+  
+    width: 800px;
+    max-width: 720px;
+    height: 800px;
+    margin: 0 auto;
+    padding: 12px;
+  
+    align-items: stretch;
+  
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(3, 1fr);
     justify-items: center;
-    align-items: stretch;
     gap: 1rem;
-    margin: 0 auto;
-    width: 800px;
-    height: 800px;
     perspective: 100%;
-    max-width: 720px;
-}
+  }
+  
