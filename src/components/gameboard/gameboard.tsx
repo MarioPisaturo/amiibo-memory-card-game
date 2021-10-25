@@ -9,6 +9,7 @@ import './gameboard.scss';
 
 export interface IGameboard extends IDeckModel {
   onCompletionCallback?: (moves: number) => any;
+  backfaceImageUrl?: string;
 }
 interface ICardsCleared {
   [key: string]: string;
@@ -23,7 +24,7 @@ const checkCardStatus = (index: number, cardsOpened: number[], cardsCleared: ICa
   return CARD_ITEM_STATE_BACKFACED;
 };
 
-const Gameboard: React.FC<IGameboard> = ({ cards = [], id, onCompletionCallback = () => {} }) => {
+const Gameboard: React.FC<IGameboard> = ({ cards = [], id, onCompletionCallback = () => {}, backfaceImageUrl }) => {
   const [cardsOpened, setCardsOpen] = useState<Array<number>>([]);
   const [cardsCleared, setCardsCleared] = useState<ICardsCleared>({});
   const [moves, setMoves] = useState<number>(0);
@@ -67,6 +68,7 @@ const Gameboard: React.FC<IGameboard> = ({ cards = [], id, onCompletionCallback 
             id={index}
             onCardClicked={onCardClicked}
             imageUrl={card.imageUrl}
+            backfaceUrl={backfaceImageUrl}
             state={checkCardStatus(index, cardsOpened, cardsCleared, card)}
           />
         );
@@ -77,6 +79,7 @@ const Gameboard: React.FC<IGameboard> = ({ cards = [], id, onCompletionCallback 
 };
 
 Gameboard.propTypes = {
+  backfaceImageUrl: PropTypes.string,
   cards: PropTypes.array,
   id: PropTypes.number.isRequired,
   onCompletionCallback: PropTypes.func,

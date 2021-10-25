@@ -1,0 +1,31 @@
+.app {
+  text-align: center;
+}
+
+.app-gameboard {
+  background-color: white;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+}
+
+.select-game-container {
+  display: grid;
+
+  width: 800px;
+  max-width: 720px;
+  height: 300px;
+  margin: 0 auto;
+  padding: 12px;
+
+  align-items: stretch;
+
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(1, 1fr);
+  justify-items: center;
+  gap: 1rem;
+  perspective: 100%;
+}

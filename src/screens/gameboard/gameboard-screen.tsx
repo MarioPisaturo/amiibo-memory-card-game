@@ -1,7 +1,9 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
-import './App.scss';
-import Gameboard from './components/gameboard/gameboard';
+import Gameboard from '../../components/gameboard/gameboard';
+import { useQuery } from '../../utils/use-query';
+import { amibooGameSelection } from '../../utils/game-selection';
 
 const defaultCards = [
   { imageUrl: './assets/mario-logo.png', id: 1 },
@@ -18,17 +20,29 @@ const defaultCards = [
   { imageUrl: './assets/animal-crossing.png', id: 7 },
 ];
 
-const onCompletionCallback = (moves: number) => console.log('You win in MOVES:', moves);
+function GameboardScreen() {
+  const history = useHistory();
+  const query = useQuery();
+  const type = query.get('type');
+  const amiiboType = amibooGameSelection.find((elm) => elm.type === type);
 
-function App() {
+  function onCompletionCallback(moves: number) {
+    setTimeout(() => history.push(`/completion?moves=${moves}`), 500);
+  }
+
   return (
     <div className="app">
       <div className="app-gameboard">
-        <p>Welcome to Amiboo memory card game!</p>
-        <Gameboard id={1} type="random" cards={defaultCards} onCompletionCallback={onCompletionCallback} />
+        <Gameboard
+          id={1}
+          type="random"
+          backfaceImageUrl={amiiboType?.backfaceUrl}
+          cards={defaultCards}
+          onCompletionCallback={onCompletionCallback}
+        />
       </div>
     </div>
   );
 }
 
-export default App;
+export default GameboardScreen;
