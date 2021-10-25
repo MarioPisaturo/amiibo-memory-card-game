@@ -18,19 +18,17 @@ ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
       <Router>
-        <div>
-          <Switch>
-            <Route exact path="/">
-              <HomepageScreen />
-            </Route>
-            <Route path="/gameboard">
-              <GameBoardScreen />
-            </Route>
-            <Route path="/completion">
-              <CompletionScreen />
-            </Route>
-          </Switch>
-        </div>
+        <Switch>
+          <Route exact path="/">
+            <HomepageScreen />
+          </Route>
+          <Route path="/gameboard">
+            <GameBoardScreen />
+          </Route>
+          <Route path="/completion">
+            <CompletionScreen />
+          </Route>
+        </Switch>
       </Router>
     </Provider>
   </React.StrictMode>,
