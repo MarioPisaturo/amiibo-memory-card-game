@@ -11,6 +11,7 @@ import { fetchAmiibo } from './redux/amiibo-thunks';
 
 import './index.scss';
 
+// fetch the data needed for the game
 store.dispatch(fetchAmiibo());
 
 ReactDOM.render(
@@ -35,19 +36,3 @@ ReactDOM.render(
   </React.StrictMode>,
   document.getElementById('root')
 );
-
-/**
- *  <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/gameboard">Gameboard</Link>
-            </li>
-            <li>
-              <Link to="/completion">Completion</Link>
-            </li>
-          </ul>
-        </nav>
- */

@@ -3,7 +3,7 @@ import { decoreteAmiiboWithId, mapAmiiboModelToCard } from '../utils/amiibo';
 import { ANIMAL_CROSSING_GAME_SERIES } from '../utils/constants';
 
 /**
- * CREATE GAME DECK
+ * Create Game Deck
  */
 export const createAmiiboDeck = (state: any, type = ANIMAL_CROSSING_GAME_SERIES) => {
   const amiiboArray = state.amiibo.amiiboCollection[type].amiibo;
@@ -12,4 +12,7 @@ export const createAmiiboDeck = (state: any, type = ANIMAL_CROSSING_GAME_SERIES)
   return deck.map(mapAmiiboModelToCard);
 };
 
+/**
+ * Select app state
+ */
 export const selectAppState = (state: any) => state.amiibo.appState;
