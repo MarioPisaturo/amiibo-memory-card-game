@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '../../utils/use-query';
 import './completion-screen.scss';
 
-function CompletionScreen() {
+const CompletionScreen: React.FC = () => {
   const query = useQuery();
   const moves = query.get('moves');
 
@@ -16,6 +16,6 @@ function CompletionScreen() {
       </div>
     </div>
   );
-}
+};
 
 export default CompletionScreen;
