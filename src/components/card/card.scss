@@ -1,39 +1,50 @@
-/*
-TODO: to update in BEM
-*/
-
 .card {
-    width: 100%;
-    height: 100%;
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  cursor: pointer;
+  transition: .3s;
+
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px 4px #dedede;
+
+  transform-style: preserve-3d;
+
+  img {
+    width: 95%;
+    height: 95%;
+    margin-top: 5px;
+
     border-radius: 4px;
-    box-shadow: 2px 2px 4px 4px #DEDEDE;
-    transition: 0.3s;
-    transform-style: preserve-3d;
-    position: relative;
-    cursor: pointer;
-    
-    img {
-      width: 95%;
-      height: 95%;
-      border-radius: 4px;
-      margin-top: 5px;
-    }
-    
-    .card-face {
-      backface-visibility: hidden;
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      &.card-back-face {
-        transform: rotateY(180deg);
-      }
-    }
-  
-    &.is-flipped {
-      transform: rotateY(180deg);
-    }
-  
-    &.is-inactive {
-      opacity: 0;
-    }
   }
+}
+
+.card--card-face {
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  backface-visibility: hidden;
+}
+
+.card--card-back-face {
+  transform: rotateY(180deg);
+}
+
+/**  CARD STATE
+* - matched 
+* - enabled 
+* - hidden 
+*/
+.card[data-state= 'matched'],
+.card[data-state= 'enabled'] {
+  transform: rotateY(180deg);
+}
+
+.card[data-state= 'hidden'] {
+  opacity: 0;
+}
+
