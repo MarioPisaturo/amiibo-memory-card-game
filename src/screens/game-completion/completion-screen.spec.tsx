@@ -28,3 +28,5 @@ describe('CompletionScreen', () => {
     expect(shallow(<CompletionScreen {...props} />)).toMatchSnapshot();
   });
 });
+
+/** TODO: add other tests */
