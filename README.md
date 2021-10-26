@@ -22,7 +22,7 @@ Realizza un gioco memory card con i personaggi amiboo con foto e nome presi in m
 - Jest/Enzyme (for unit and integration testing)
 
 
-# TESTS (partial - on some components for demo porpouse)
+## TESTS (partial - on some components for demo porpouse)
 
 
 File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
