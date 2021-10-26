@@ -42,6 +42,7 @@
     "jest-environment-jsdom": "^27.3.1",
     "node-sass": "^6.0.1",
     "prop-types": "^15.7.2",
+    "sass-mq": "^5.0.1",
     "ts-jest": "^27.0.7"
   },
   "eslintConfig": {

@@ -1,30 +1,46 @@
-.app {
-  text-align: center;
-}
+@import '../../styles/index.scss';
+
+$max-width-mobile:300px;
+$height-mobile:400px;
+
+$max-width-desktop:500px;
+$height-desktop:250px;
 
 .app-gameboard {
-  background-color: white;
-  min-height: 100vh;
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+
+  min-height: 100vh;
+
   font-size: calc(10px + 2vmin);
+
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+
+  background-color: $app-background-color;
 }
 
-.select-game-container {
+.game-select-container {
   display: grid;
 
-  width: 800px;
-  max-width: 720px;
-  height: 350px;
+  width: 90%;
+  max-width: $max-width-mobile;
+  height: $height-mobile;
   margin: 0 auto;
   padding: 12px;
 
   align-items: stretch;
 
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(1, 1fr);
+  grid-template-columns: repeat(2, 1.1fr);
+  grid-template-rows: repeat(2, 1fr);
+  @include mq(tablet) {
+    width: 100%;
+    max-width: $max-width-desktop;
+    height: $height-desktop;
+
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(1, 1fr);
+  }
   justify-items: center;
   gap: 1rem;
   perspective: 100%;

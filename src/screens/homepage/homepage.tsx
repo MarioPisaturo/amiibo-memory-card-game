@@ -15,10 +15,10 @@ const Homepage: React.FC = () => {
   };
 
   return (
-    <div className="app">
+    <div>
       <div className="app-gameboard">
         <p>Welcome to Amiboo memory card game!</p>
-        <div className="select-game-container">
+        <div className="game-select-container">
           {amiiboGameSelection.map((elm: IAmiiboGameSelection) => {
             return <Card {...elm} onCardClicked={onAmiiboTypeSelected} key={elm.id} />;
           })}
