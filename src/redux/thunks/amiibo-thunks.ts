@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 
-/** hard wired
+/** hard-wired
  * TODO: to set in config file
  */
 const POKEMON_GAME_SERIES_API_ENDPOINT = 'https://www.amiiboapi.com//api/amiibo/?gameseries=Pokemon';
