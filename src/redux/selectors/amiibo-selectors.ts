@@ -6,7 +6,7 @@ import { IAmiiboState } from '../slices/amiibo-slice';
 /**
  * Create Game Deck
  */
-export const createAmiiboDeck = (state: object, type = ANIMAL_CROSSING_GAME_SERIES) => {
+export const createAmiiboDeck = (state: object, type: string = ANIMAL_CROSSING_GAME_SERIES) => {
   // @ts-ignore ignore type inference
   const amiiboArray = state.amiibo.amiiboCollection[type].amiibo;
   const amibooArrayWithIds = amiiboArray?.map(decoreteAmiiboWithId);
