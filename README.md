@@ -20,3 +20,19 @@ Realizza un gioco memory card con i personaggi amiboo con foto e nome presi in m
 - Redux && Redux-toolkit (modern redux approach - dismiss redux-thunk and reselect)
 - React Router 
 - Jest/Enzyme (for unit and integration testing)
+
+
+# TESTS (partial - on some components for demo porpouse)
+
+
+File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------------------|---------|----------|---------|---------|-------------------
+All files             |   84.55 |       88 |   78.26 |    86.2 |                   
+ components/card      |     100 |      100 |     100 |     100 |                   
+  card.tsx            |     100 |      100 |     100 |     100 |                   
+ components/gameboard |   97.91 |    86.66 |   81.81 |   96.96 |                   
+  gameboard.tsx       |   97.91 |    86.66 |   81.81 |   96.96 | 49                
+ redux/slices         |   78.57 |      100 |      50 |   78.57 |                   
+  amiibo-slice.ts     |   78.57 |      100 |      50 |   78.57 | 47,50-51          
+ utils                |     100 |      100 |     100 |     100 |                   
+  deck-utils.ts       |     100 |      100 |     100 |     100 |                   
