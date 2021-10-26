@@ -58,8 +58,8 @@ All files             |   84.55 |       88 |   78.26 |    86.2 |
   deck-utils.ts       |     100 |      100 |     100 |     100 |      
   
   
-## Gameboard 
+## Game Preview 
 
-![game](https://user-images.githubusercontent.com/42066439/138908851-b22bddb7-57b4-4cd8-9d10-00548963f0b0.gif)
+![game2](https://user-images.githubusercontent.com/42066439/138911598-e26f487a-eff3-4787-ae61-179dc6aab2ca.gif)
 
 
