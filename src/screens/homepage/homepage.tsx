@@ -6,7 +6,9 @@ import Card from '../../components/card/card';
 
 import './homepage.scss';
 
-const Homepage: React.FC = () => {
+export interface IHomepage {}
+
+const Homepage: React.FC<IHomepage> = () => {
   const history = useHistory();
 
   const onAmiiboTypeSelected = (id: number) => {

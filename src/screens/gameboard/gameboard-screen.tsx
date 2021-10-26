@@ -15,7 +15,9 @@ const DEFAULT_DECK_TYPE = ANIMAL_CROSSING_GAME_SERIES;
 
 const isLoading = (appState: string) => appState === STATE_LOADING;
 
-const GameboardScreen: React.FC = () => {
+export interface IGameboardScreen {}
+
+const GameboardScreen: React.FC<IGameboardScreen> = () => {
   const history = useHistory();
   const query = useQuery();
   const type = query.get('type');

@@ -4,7 +4,9 @@ import { Link } from 'react-router-dom';
 import { useQuery } from '../../utils/use-query';
 import './completion-screen.scss';
 
-const CompletionScreen: React.FC = () => {
+export interface ICompletionScreen {}
+
+const CompletionScreen: React.FC<ICompletionScreen> = () => {
   const query = useQuery();
   const moves = query.get('moves');
 
