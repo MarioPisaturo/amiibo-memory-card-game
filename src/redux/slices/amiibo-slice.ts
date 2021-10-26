@@ -43,6 +43,9 @@ export const amiiboSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
+    builder.addCase(fetchAmiibo.pending, (state, action) => {
+      state.appState = STATE_LOADING;
+    });
     builder.addCase(fetchAmiibo.fulfilled, (state, action) => {
       state.amiiboCollection = action.payload;
       state.appState = STATE_LOADED;
