@@ -21,6 +21,26 @@ Realizza un gioco memory card con i personaggi amiboo con foto e nome presi in m
 - React Router 
 - Jest/Enzyme (for unit and integration testing)
 
+## Development
+-   Run the project in development mode
+    `npm start`
+
+
+### Compile
+
+- Build web app 
+`npm run build`
+
+
+
+### Unit Testing
+To add a unit test, simply create  `.spec.tsx` file anywhere in  `~/src`.  
+
+    npm run test:jest          # Run all unit tests
+    npm run test:jest:watch     # Run tests with file watch
+    
+
+
 
 ## TESTS (partial - on some components for demo porpouse)
 
