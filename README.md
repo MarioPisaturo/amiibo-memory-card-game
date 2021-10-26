@@ -55,4 +55,11 @@ All files             |   84.55 |       88 |   78.26 |    86.2 |
  redux/slices         |   78.57 |      100 |      50 |   78.57 |                   
   amiibo-slice.ts     |   78.57 |      100 |      50 |   78.57 | 47,50-51          
  utils                |     100 |      100 |     100 |     100 |                   
-  deck-utils.ts       |     100 |      100 |     100 |     100 |                   
+  deck-utils.ts       |     100 |      100 |     100 |     100 |      
+  
+  
+## Gameboard 
+
+![game](https://user-images.githubusercontent.com/42066439/138908851-b22bddb7-57b4-4cd8-9d10-00548963f0b0.gif)
+
+
