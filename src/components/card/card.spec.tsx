@@ -7,6 +7,7 @@ import Card, {
   CARD_ITEM_STATE_BACKFACED,
   CARD_ITEM_STATE_ENABLED,
   CARD_ITEM_STATE_MATCHED,
+  DEFAULT_BACKFACE_ASSET_URL,
 } from './card';
 
 /** Card Component TEST SUITE
@@ -40,7 +41,7 @@ describe('Card components', () => {
     expect(wrapper).toHaveLength(1);
 
     expect(wrapper.find('div').at(0).prop('data-state')).toEqual(CARD_ITEM_STATE_BACKFACED);
-    expect(wrapper.find('img').at(0).prop('src')).toEqual('./assets/poketball.png'); // DEFAULT PROP BACKFACE
+    expect(wrapper.find('img').at(0).prop('src')).toEqual(DEFAULT_BACKFACE_ASSET_URL); // DEFAULT PROP BACKFACE
     expect(wrapper.find('img').at(1).prop('src')).toEqual(props.imageUrl);
     expect(wrapper.find('div').at(1).prop('className')).toMatch(/card--card-face/); // card face
     expect(wrapper.find('div').at(2).prop('className')).toMatch(/card--card-face card--card-back-face/); // card back face

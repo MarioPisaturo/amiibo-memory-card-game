@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -8,6 +8,8 @@ import { amiiboGameSelection } from '../../utils/game-selection';
 import { createAmiiboDeck, selectAppState } from '../../redux/selectors/amiibo-selectors';
 import { STATE_LOADING } from '../../redux/slices/amiibo-slice';
 import { ANIMAL_CROSSING_GAME_SERIES } from '../../utils/constants';
+
+import './gameboard-screen.scss';
 
 const DEFAULT_DECK_TYPE = ANIMAL_CROSSING_GAME_SERIES;
 
@@ -28,7 +30,10 @@ const GameboardScreen: React.FC = () => {
   return (
     <div className="app-gameboard">
       {isLoading(appState) ? (
-        <p>Loading...</p>
+        <Fragment>
+          {/** Loading Component should be placed here */}
+          <p>Loading...</p>
+        </Fragment>
       ) : (
         <Gameboard
           id={1}

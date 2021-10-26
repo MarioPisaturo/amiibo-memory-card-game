@@ -12,6 +12,8 @@ export const CARD_ITEM_STATE_ENABLED: CardState = 'enabled';
 export const CARD_ITEM_STATE_MATCHED: CardState = 'matched';
 export const CARD_ITEM_STATE_BACKFACED: CardState = 'backfaced';
 
+export const DEFAULT_BACKFACE_ASSET_URL = './assets/animal-crossing.png';
+
 export interface ICard extends ICardModel {
   state: CardState;
   backfaceUrl?: string;
@@ -26,7 +28,7 @@ const handleClick = (id: number, onCardClicked: (id: number) => any, state: Card
   }
 };
 
-const Card: React.FC<ICard> = ({ id, onCardClicked, state, imageUrl, backfaceUrl = './assets/poketball.png' }) => {
+const Card: React.FC<ICard> = ({ id, onCardClicked, state, imageUrl, backfaceUrl = DEFAULT_BACKFACE_ASSET_URL }) => {
   return (
     <div className="card" data-state={state} onClick={() => onCardClicked && handleClick(id, onCardClicked, state)}>
       <div className="card--card-face">
