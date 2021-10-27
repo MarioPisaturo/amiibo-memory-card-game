@@ -156,7 +156,7 @@ describe('Gameboard', () => {
     expect(card5State).toEqual(CARD_ITEM_STATE_MATCHED); // last 2 matched to win
     expect(card6State).toEqual(CARD_ITEM_STATE_MATCHED); // last 2 matched to win
     expect(spyOnWin).toHaveBeenCalledTimes(1);
-    expect(spyOnWin).toHaveLastReturnedWith(true); // id === 1234
+    expect(spyOnWin).toHaveLastReturnedWith(true); // you win in 3 moves!
   });
 
   it('should render a Gameboard with 0 cards- empty cards array shoud not cause a crash ', () => {
