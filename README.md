@@ -69,6 +69,10 @@ All files                |      88 |    73.07 |   76.92 |   90.19 |
   game-selection.ts      |     100 |      100 |     100 |     100 |                   
   use-query.ts           |     100 |      100 |     100 |     100 |                   
   
+Test Suites: 7 passed, 7 total
+Tests:       25 passed, 25 total
+Snapshots:    2 passed, 2 total
+
 ## Game Preview 
 
 ![game2](https://user-images.githubusercontent.com/42066439/138911598-e26f487a-eff3-4787-ae61-179dc6aab2ca.gif)
