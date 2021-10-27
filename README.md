@@ -45,18 +45,29 @@ To add a unit test, simply create  `.spec.tsx` file anywhere in  `~/src`.
 ## TESTS (partial - on some components for demo porpouse)
 
 
-File                  | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
-----------------------|---------|----------|---------|---------|-------------------
-All files             |   84.55 |       88 |   78.26 |    86.2 |                   
- components/card      |     100 |      100 |     100 |     100 |                   
-  card.tsx            |     100 |      100 |     100 |     100 |                   
- components/gameboard |   97.91 |    86.66 |   81.81 |   96.96 |                   
-  gameboard.tsx       |   97.91 |    86.66 |   81.81 |   96.96 | 49                
- redux/slices         |   78.57 |      100 |      50 |   78.57 |                   
-  amiibo-slice.ts     |   78.57 |      100 |      50 |   78.57 | 47,50-51          
- utils                |     100 |      100 |     100 |     100 |                   
-  deck-utils.ts       |     100 |      100 |     100 |     100 |      
-  
+File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+-------------------------|---------|----------|---------|---------|-------------------
+All files                |      88 |    73.07 |   76.92 |   90.19 |                   
+ components/card         |     100 |      100 |     100 |     100 |                   
+  card.tsx               |     100 |      100 |     100 |     100 |                   
+ components/gameboard    |   97.91 |    86.66 |   81.81 |   96.96 |                   
+  gameboard.tsx          |   97.91 |    86.66 |   81.81 |   96.96 | 49                
+ redux/selectors         |     100 |    57.14 |     100 |     100 |                   
+  amiibo-selectors.ts    |     100 |    57.14 |     100 |     100 | 9-13              
+ redux/slices            |   78.57 |      100 |      50 |   78.57 |                   
+  amiibo-slice.ts        |   78.57 |      100 |      50 |   78.57 | 47,50-51          
+ screens/game-completion |     100 |      100 |     100 |     100 |                   
+  completion-screen.tsx  |     100 |      100 |     100 |     100 |                   
+ screens/gameboard       |   92.59 |    78.57 |   66.66 |   95.65 |                   
+  gameboard-screen.tsx   |   92.59 |    78.57 |   66.66 |   95.65 | 29                
+ screens/homepage        |   76.92 |        0 |      50 |   83.33 |                   
+  homepage.tsx           |   76.92 |        0 |      50 |   83.33 | 15-16             
+ utils                   |     100 |       75 |     100 |     100 |                   
+  amiibo.ts              |     100 |       50 |     100 |     100 | 6                 
+  constants.ts           |     100 |      100 |     100 |     100 |                   
+  deck-utils.ts          |     100 |      100 |     100 |     100 |                   
+  game-selection.ts      |     100 |      100 |     100 |     100 |                   
+  use-query.ts           |     100 |      100 |     100 |     100 |                   
   
 ## Game Preview 
 
