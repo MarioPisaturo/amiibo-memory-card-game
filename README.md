@@ -44,16 +44,15 @@ To add a unit test, simply create  `.spec.tsx` file anywhere in  `~/src`.
 
 ## TESTS (partial - on some components for demo porpouse)
 
-
 File                     | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
 -------------------------|---------|----------|---------|---------|-------------------
-All files                |      88 |    73.07 |   76.92 |   90.19 |                   
+All files                |   95.02 |    80.39 |   78.94 |   95.03 |                   
  components/card         |     100 |      100 |     100 |     100 |                   
   card.tsx               |     100 |      100 |     100 |     100 |                   
  components/gameboard    |   97.91 |    86.66 |   81.81 |   96.96 |                   
   gameboard.tsx          |   97.91 |    86.66 |   81.81 |   96.96 | 49                
- redux/selectors         |     100 |    57.14 |     100 |     100 |                   
-  amiibo-selectors.ts    |     100 |    57.14 |     100 |     100 | 9-13              
+ redux/selectors         |     100 |      100 |     100 |     100 |                   
+  amiibo-selectors.ts    |     100 |      100 |     100 |     100 |                   
  redux/slices            |   78.57 |      100 |      50 |   78.57 |                   
   amiibo-slice.ts        |   78.57 |      100 |      50 |   78.57 | 47,50-51          
  screens/game-completion |     100 |      100 |     100 |     100 |                   
@@ -68,10 +67,11 @@ All files                |      88 |    73.07 |   76.92 |   90.19 |
   deck-utils.ts          |     100 |      100 |     100 |     100 |                   
   game-selection.ts      |     100 |      100 |     100 |     100 |                   
   use-query.ts           |     100 |      100 |     100 |     100 |                   
-  
-Test Suites: 7 passed, 7 total
-Tests:       25 passed, 25 total
-Snapshots:    2 passed, 2 total
+
+Test Suites: 8 passed, 8 total
+Tests:       29 passed, 29 total
+Snapshots:   2 passed, 2 total
+Time:        8.028 s
 
 ## Game Preview 
 

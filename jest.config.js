@@ -26,6 +26,11 @@ module.exports = {
 
   // Code Coverage
   collectCoverage: true,
+  coveragePathIgnorePatterns: [
+    '<rootDir>/node_modules/',
+    '<rootDir>/src/index.ts',
+    '<rootDir>/src/redux/thunks/amiibo-thunks.ts',
+  ],
   coverageReporters: ['text', 'html', 'cobertura', 'json-summary'],
 
   // To run all TEST from the ROOT of the monorepo
