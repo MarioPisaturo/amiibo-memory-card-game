@@ -1,10 +1,10 @@
-import { ICard } from '../components/card/card';
+import { ICard, CARD_ITEM_STATE_BACKFACED } from '../components/card/card';
 import { IAmiibo } from '../typings/amiibo';
 
 export const mapAmiiboModelToCard = (amiibo: IAmiibo, index: number): ICard => {
   return {
     id: amiibo.id || 0,
-    state: 'backfaced',
+    state: CARD_ITEM_STATE_BACKFACED,
     imageUrl: amiibo.image,
   };
 };
