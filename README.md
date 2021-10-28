@@ -1,9 +1,9 @@
-# Amiibo memory card game - Code Challange 
+# Amiibo memory card game - Code Challenge 
 [Cosa sono gli amiibo?](https://it.wikipedia.org/wiki/Amiibo)
 
 [Cosa é un memory card game?](https://www.youtube.com/watch?v=2x6AGMnePQE&ab_channel=Rani%27sToysandGames)
 
-### Code challange:
+### Code challenge:
 Realizza un gioco memory card con i personaggi amiboo con foto e nome presi in modo casuale. L'utente potrà scegliere di giocare con personaggi casuali di uno dei seguenti tre gameseries:
 
 - Mario Sports Superstars
