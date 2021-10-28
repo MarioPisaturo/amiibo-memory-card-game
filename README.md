@@ -68,10 +68,12 @@ All files                |   95.02 |    80.39 |   78.94 |   95.03 |
   game-selection.ts      |     100 |      100 |     100 |     100 |                   
   use-query.ts           |     100 |      100 |     100 |     100 |                   
 
+```js
 Test Suites: 8 passed, 8 total
 Tests:       29 passed, 29 total
 Snapshots:   2 passed, 2 total
 Time:        8.028 s
+```
 
 ## Game Preview 
 
