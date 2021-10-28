@@ -73,7 +73,10 @@ Test Suites: 8 passed, 8 total
 Tests:       29 passed, 29 total
 Snapshots:   2 passed, 2 total
 Time:        8.028 s
+
 ```
+<img width="1724" alt="coverage-image" src="https://user-images.githubusercontent.com/42066439/139247899-85524a4a-d264-4728-a839-1acccba01706.png">
+
 
 ## Game Preview 
 
