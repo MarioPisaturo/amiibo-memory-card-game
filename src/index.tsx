@@ -8,6 +8,7 @@ import GameBoardScreen from './screens/gameboard/gameboard-screen';
 import CompletionScreen from './screens/game-completion/completion-screen';
 import store from './redux/store';
 import { fetchAmiibo } from './redux/thunks/amiibo-thunks';
+import { GameProvider } from './context/game-context';
 
 import './index.scss';
 
@@ -17,19 +18,21 @@ store.dispatch(fetchAmiibo());
 ReactDOM.render(
   <React.StrictMode>
     <Provider store={store}>
-      <Router>
-        <Switch>
-          <Route exact path="/">
-            <HomepageScreen />
-          </Route>
-          <Route path="/gameboard">
-            <GameBoardScreen />
-          </Route>
-          <Route path="/completion">
-            <CompletionScreen />
-          </Route>
-        </Switch>
-      </Router>
+      <GameProvider>
+        <Router>
+          <Switch>
+            <Route exact path="/">
+              <HomepageScreen />
+            </Route>
+            <Route path="/gameboard">
+              <GameBoardScreen />
+            </Route>
+            <Route path="/completion">
+              <CompletionScreen />
+            </Route>
+          </Switch>
+        </Router>
+      </GameProvider>
     </Provider>
   </React.StrictMode>,
   document.getElementById('root')
