@@ -1,7 +1,6 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 import { IAmiibo } from '../../typings/amiibo';
-import { fetchAmiibo } from '../thunks/amiibo-thunks';
 
 export const STATE_LOADING = 'AMIIBO_LOADING';
 export const STATE_LOADED = 'AMIIBO_LOADED';
@@ -41,15 +40,6 @@ export const amiiboSlice = createSlice({
     setAppState: (state, action) => {
       state.appState = action.payload;
     },
-  },
-  extraReducers: (builder) => {
-    builder.addCase(fetchAmiibo.pending, (state, action) => {
-      state.appState = STATE_LOADING;
-    });
-    builder.addCase(fetchAmiibo.fulfilled, (state, action) => {
-      state.amiiboCollection = action.payload;
-      state.appState = STATE_LOADED;
-    });
   },
 });
 

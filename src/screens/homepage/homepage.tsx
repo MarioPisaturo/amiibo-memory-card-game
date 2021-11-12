@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import { amiiboGameSelection, IAmiiboGameSelection } from '../../utils/game-selection';
 import Card from '../../components/card/card';
+import { useGetAmiiboByGameSeriesQuery } from '../../service/amiibo-api';
 
 import './homepage.scss';
 
@@ -10,6 +11,11 @@ export interface IHomepage {}
 
 const Homepage: React.FC<IHomepage> = () => {
   const history = useHistory();
+
+  // prefetch using RKT Query
+  // useGetAmiiboByGameSeriesQuery('Pokemon');
+  // useGetAmiiboByGameSeriesQuery('Animal%20Crossing');
+  // useGetAmiiboByGameSeriesQuery('Mario%20Sports%20Superstars');
 
   const onAmiiboTypeSelected = (id: number) => {
     const selectedAmiibo = amiiboGameSelection.find((elm) => elm.id === id);
