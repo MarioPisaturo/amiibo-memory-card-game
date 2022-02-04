@@ -3,6 +3,7 @@ import { useHistory } from 'react-router-dom';
 
 import { amiiboGameSelection, IAmiiboGameSelection } from '../../utils/game-selection';
 import Card from '../../components/card/card';
+import { useGetAmiiboByGameSeriesQuery } from '../../service/amiibo-api';
 
 import './homepage.scss';
 
