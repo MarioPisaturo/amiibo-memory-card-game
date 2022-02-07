@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useReducer } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import { IDeckModel } from '../../typings/deck';
@@ -11,6 +11,7 @@ import './gameboard.scss';
 
 export interface IGameboard extends IDeckModel {
   onCompletionCallback?: (moves: number) => any;
+  onMove?: (totalMoves: number) => any;
   backfaceImageUrl?: string;
 }
 
