@@ -17,7 +17,7 @@ Realizza un gioco memory card con i personaggi amiboo con foto e nome presi in m
 - Typescript 
 - React 17
 - Sass 
-- Redux && Redux-toolkit (modern redux approach - dismiss **redux-thunk** and **reselect**)
+- Redux && Redux-toolkit + RKQ (modern redux approach - dismiss **redux-thunk** and **reselect**)
 - React Router 
 - Jest/Enzyme (for unit and integration testing)
 
