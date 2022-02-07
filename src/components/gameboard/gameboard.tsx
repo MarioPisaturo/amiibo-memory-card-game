@@ -1,9 +1,11 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
 
 import { IDeckModel } from '../../typings/deck';
 import { ICardModel } from '../../typings/card';
 import Card, { CARD_ITEM_STATE_ENABLED, CARD_ITEM_STATE_MATCHED, CARD_ITEM_STATE_BACKFACED } from '../card/card';
+
+import { reducer, ACTIONS, initialState, ICardsCleared } from './gameboard-reducer';
 
 import './gameboard.scss';
 
@@ -11,9 +13,6 @@ export interface IGameboard extends IDeckModel {
   onCompletionCallback?: (moves: number) => any;
   onMove?: (totalMoves: number) => any;
   backfaceImageUrl?: string;
-}
-interface ICardsCleared {
-  [key: string]: string;
 }
 
 const checkCardStatus = (index: number, cardsOpened: number[], cardsCleared: ICardsCleared, card: ICardModel) => {
@@ -25,47 +24,38 @@ const checkCardStatus = (index: number, cardsOpened: number[], cardsCleared: ICa
   return CARD_ITEM_STATE_BACKFACED;
 };
 
-const Gameboard: React.FC<IGameboard> = ({
-  cards = [],
-  id,
-  onCompletionCallback = () => {},
-  onMove = () => {},
-  backfaceImageUrl,
-}) => {
-  const [cardsOpened, setCardsOpen] = useState<Array<number>>([]);
-  const [cardsCleared, setCardsCleared] = useState<ICardsCleared>({});
-  const [moves, setMoves] = useState<number>(0);
+const Gameboard: React.FC<IGameboard> = ({ cards = [], id, onCompletionCallback = () => {}, backfaceImageUrl }) => {
+  const [state, dispatch] = useReducer(reducer, { ...initialState });
 
-  const onCardClicked = (id: number) => {
-    if (cardsOpened.length === 1) {
-      setMoves((moves) => moves + 1);
-      setCardsOpen((cardsIds: number[]) => [...cardsIds, id]);
-      onMove(moves + 1);
+  const onCardClicked = (cardId: number) => {
+    if (state.cardsOpened.length === 1) {
+      dispatch({ type: ACTIONS.INCREMENT_MOVES });
+      dispatch({ type: ACTIONS.ADD_CARDS_OPEN, payload: { cardId } });
     } else {
-      setCardsOpen([id]);
+      dispatch({ type: ACTIONS.SET_CARDS_OPEN, payload: { cardId } });
     }
   };
 
   /** Cards open/close hook */
   useEffect(() => {
-    if (cardsOpened.length === 2) {
-      const [card1, card2] = cardsOpened;
+    if (state.cardsOpened.length === 2) {
+      const [card1, card2] = state.cardsOpened;
       if (cards[card1].id === cards[card2].id) {
-        setCardsCleared((prev: ICardsCleared) => ({ ...prev, [cards[card1].id]: true }));
+        dispatch({ type: ACTIONS.SET_CARDS_CLEARED, payload: { cardId: cards[card1].id } });
       } else {
         setTimeout(() => {
-          setCardsOpen([]);
+          dispatch({ type: ACTIONS.CLEAR_CARDS_OPEN });
         }, 500);
       }
     }
-  }, [cardsOpened, cards]);
+  }, [state.cardsOpened, cards]);
 
   /* check onCompletion Hook*/
   useEffect(() => {
-    if (Object.keys(cardsCleared).length === cards.length / 2) {
-      onCompletionCallback(moves);
+    if (Object.keys(state.cardsCleared).length === cards.length / 2) {
+      onCompletionCallback(state.moves);
     }
-  }, [cardsCleared, cards, moves, onCompletionCallback]);
+  }, [state.cardsCleared, state.moves, cards, onCompletionCallback]);
 
   return (
     <div className="gameboard" id={`${id}`}>
@@ -77,11 +67,11 @@ const Gameboard: React.FC<IGameboard> = ({
             onCardClicked={onCardClicked}
             imageUrl={card.imageUrl}
             backfaceUrl={backfaceImageUrl}
-            state={checkCardStatus(index, cardsOpened, cardsCleared, card)}
+            state={checkCardStatus(index, state.cardsOpened, state.cardsCleared, card)}
           />
         );
       })}
-      <div>{`Moves:${moves}`}</div>
+      <div>{`Moves:${state.moves}`}</div>
     </div>
   );
 };
