@@ -17,17 +17,9 @@
   &:hover {
     transform: scale(1.05);
   }
-  
-  img {
-    width: 95%;
-    height: 95%;
-    margin-top: 5px;
-    margin-left: 4px;
-    border-radius: 4px;
-  }
 }
 
-.card--card-face {
+.card__card-face {
   position: absolute;
 
   width: 100%;
@@ -36,7 +28,7 @@
   backface-visibility: hidden;
 }
 
-.card--card-back-face {
+.card__card-back-face {
   transform: rotateY(180deg);
 }
 
