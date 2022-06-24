@@ -1,8 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@linaria/react';
+import { css } from '@linaria/core';
 
 import { ICardModel } from '../../typings/card';
+import { colors } from '../../styles/colors';
+import { rotateY180 } from '../../styles/utils';
 
 import './card.scss';
 
@@ -14,15 +17,6 @@ export const CARD_ITEM_STATE_MATCHED: CardState = 'matched';
 export const CARD_ITEM_STATE_BACKFACED: CardState = 'backfaced';
 
 export const DEFAULT_BACKFACE_ASSET_URL = '/assets/animal-crossing.png';
-
-/** TEST LINARA  styled component syntax*/
-const CardImage = styled.img`
-  width: 95%;
-  height: 95%;
-  margin-top: 5px;
-  margin-left: 4px;
-  border-radius: 4px;
-`;
 
 export interface ICard extends ICardModel {
   state: CardState;
@@ -38,20 +32,77 @@ const handleClick = (id: number, onCardClicked: (id: number) => any, state: Card
   }
 };
 
-const Card: React.FC<ICard> = ({ id, onCardClicked, state, imageUrl, backfaceUrl = DEFAULT_BACKFACE_ASSET_URL }) => {
+const CardComponent: React.FC<ICard> = ({
+  id,
+  onCardClicked,
+  state,
+  imageUrl,
+  backfaceUrl = DEFAULT_BACKFACE_ASSET_URL,
+}) => {
   return (
-    <div className="card" data-state={state} onClick={() => onCardClicked && handleClick(id, onCardClicked, state)}>
-      <div className="card__card-face">
+    <Card data-state={state} onClick={() => onCardClicked && handleClick(id, onCardClicked, state)}>
+      <CardFace>
         <CardImage src={backfaceUrl} alt="card flipped face" />
-      </div>
-      <div className="card__card-face card__card-back-face">
+      </CardFace>
+      <CardFace className={rotate180YCardFace}>
         <CardImage src={imageUrl} alt="data-face" />
-      </div>
-    </div>
+      </CardFace>
+    </Card>
   );
 };
 
-Card.propTypes = {
+/** TEST LINARA  styled component syntax*/
+const CardImage = styled.img`
+  width: 95%;
+  height: 95%;
+  margin-top: 5px;
+  margin-left: 4px;
+  border-radius: 4px;
+`;
+
+const CardFace = styled.div`
+  position: absolute;
+
+  width: 100%;
+  height: 100%;
+
+  backface-visibility: hidden;
+`;
+
+const Card = styled.div`
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  cursor: pointer;
+  transition: 0.3s;
+
+  border-radius: 4px;
+  box-shadow: 2px 2px 4px 4px ${colors.cardBoxShadow};
+
+  transform-style: preserve-3d;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+  /** card data states */
+  &[data-state='matched'],
+  &[data-state='enabled'] {
+    ${rotateY180};
+  }
+  &[data-state='hidden'] {
+    opacity: 0;
+  }
+`;
+
+const rotate180YCardFace = css`
+  ${rotateY180}
+`;
+
+/** end  Linara test */
+
+CardComponent.propTypes = {
   backfaceUrl: PropTypes.string,
   id: PropTypes.number.isRequired,
   imageUrl: PropTypes.string.isRequired,
@@ -64,4 +115,4 @@ Card.propTypes = {
   ]).isRequired,
 };
 
-export default Card;
+export default CardComponent;

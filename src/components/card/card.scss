@@ -1,3 +1,5 @@
+
+/* MOVED TO Linara CSS 
 @import '../../styles/index.scss';
 
 .card {
@@ -36,7 +38,7 @@
 * - matched 
 * - enabled 
 * - hidden 
-*/
+
 .card[data-state= 'matched'],
 .card[data-state= 'enabled'] {
   transform: rotateY(180deg);
@@ -45,4 +47,4 @@
 .card[data-state= 'hidden'] {
   opacity: 0;
 }
-
+*/
