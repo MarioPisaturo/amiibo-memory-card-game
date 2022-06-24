@@ -1,6 +1,8 @@
 import React, { useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
+import { styled } from '@linaria/react';
 
+import { media } from '../../styles/utils';
 import { IDeckModel } from '../../typings/deck';
 import { ICardModel } from '../../typings/card';
 import Card, { CARD_ITEM_STATE_ENABLED, CARD_ITEM_STATE_MATCHED, CARD_ITEM_STATE_BACKFACED } from '../card/card';
@@ -24,7 +26,12 @@ const checkCardStatus = (index: number, cardsOpened: number[], cardsCleared: ICa
   return CARD_ITEM_STATE_BACKFACED;
 };
 
-const Gameboard: React.FC<IGameboard> = ({ cards = [], id, onCompletionCallback = () => {}, backfaceImageUrl }) => {
+const GameboardComponent: React.FC<IGameboard> = ({
+  cards = [],
+  id,
+  onCompletionCallback = () => {},
+  backfaceImageUrl,
+}) => {
   const [state, dispatch] = useReducer(reducer, { ...initialState });
 
   const onCardClicked = (cardId: number) => {
@@ -58,7 +65,7 @@ const Gameboard: React.FC<IGameboard> = ({ cards = [], id, onCompletionCallback 
   }, [state.cardsCleared, state.moves, cards, onCompletionCallback]);
 
   return (
-    <div className="gameboard" id={`${id}`}>
+    <Gameboard id={`${id}`}>
       {cards.map((card: ICardModel, index: number) => {
         return (
           <Card
@@ -72,15 +79,42 @@ const Gameboard: React.FC<IGameboard> = ({ cards = [], id, onCompletionCallback 
         );
       })}
       <div>{`Moves:${state.moves}`}</div>
-    </div>
+    </Gameboard>
   );
 };
 
-Gameboard.propTypes = {
+const Gameboard = styled.div`
+  display: grid;
+
+  width: 90%;
+  max-width: 720px;
+  height: 600px;
+  margin: 0 auto;
+  padding: 12px;
+
+  align-items: stretch;
+
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(4, 1fr);
+
+  justify-items: center;
+  gap: 1rem;
+  perspective: 100%;
+
+  ${media.tablet} {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    height: 800px;
+    width: 100%;
+    max-width: 720px;
+  }
+`;
+
+GameboardComponent.propTypes = {
   backfaceImageUrl: PropTypes.string,
   cards: PropTypes.array,
   id: PropTypes.number.isRequired,
   onCompletionCallback: PropTypes.func,
 };
 
-export default Gameboard;
+export default GameboardComponent;
